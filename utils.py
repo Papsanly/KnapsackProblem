@@ -1,7 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+import matplotlib.pyplot as plt
 
+from GeneticAlgorithm import GeneticAlgorithm
 from knapsack_problem import KnapsackProblem
 
 
@@ -32,3 +34,15 @@ def get_optimal_solution(problem: KnapsackProblem) -> int:
     solution = driver.find_element(By.XPATH, '//*[@id="kp01ResultantProfit"]').text
     driver.close()
     return int(solution)
+
+
+def graph_evolution(algorithm: GeneticAlgorithm, optimal: int) -> None:
+    x = [coord[0] for coord in algorithm.evolution_info]
+    y = [coord[1] for coord in algorithm.evolution_info]
+    plt.axhline(optimal, color='orange', label='Optimal solution', xmax=algorithm.evolution_info[0][-1], xmin=0)
+    plt.plot(x, y, label='Genetic algorithm iterations')
+    plt.title('Evolution graph')
+    plt.xlabel('Iterations')
+    plt.ylabel('Best cost')
+    plt.legend(loc='lower right')
+    plt.show()

@@ -14,6 +14,7 @@ class GeneticAlgorithm:
         self.population = initial_population
         self.iteration_limit = iteration_limit
         self._print_info = print_info
+        self.evolution_info = []
 
     def solve(self) -> Creature:
         for i in range(self.iteration_limit):
@@ -26,6 +27,7 @@ class GeneticAlgorithm:
             self.population.add(new_creature)
             self.population.kill_worst()
 
+            self.evolution_info.append((i, self.population.best.value))
             if self._print_info:
                 print_iteration_info(i, self.iteration_limit, self.population.best)
 

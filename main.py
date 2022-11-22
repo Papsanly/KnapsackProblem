@@ -1,6 +1,6 @@
 from knapsack_problem import KnapsackProblem, generate_initial_population
 from GeneticAlgorithm import GeneticAlgorithm
-from utils import get_optimal_solution
+from utils import get_optimal_solution, graph_evolution
 
 
 def main():
@@ -12,10 +12,13 @@ def main():
     )
     print(problem)
     population = generate_initial_population(100, problem)
-    solution = GeneticAlgorithm(population).solve()
+    algorithm = GeneticAlgorithm(population)
+    solution = algorithm.solve()
     print(f'Best solution: {solution}')
     print(f'Cost: {solution.value}')
-    print(f'Optimal cost: {get_optimal_solution(problem)}')
+    optimal = get_optimal_solution(problem)
+    print(f'Optimal cost: {optimal}')
+    graph_evolution(algorithm, optimal)
 
 
 if __name__ == '__main__':
