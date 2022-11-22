@@ -1,7 +1,7 @@
 from __future__ import annotations
 from collections import namedtuple
 from dataclasses import dataclass
-from random import randint, random, choices, sample
+from random import randint, random, sample
 from typing import Iterable
 from Creature import Creature
 from Population import Population
