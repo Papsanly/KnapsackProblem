@@ -45,4 +45,5 @@ def graph_evolution(algorithm: GeneticAlgorithm, optimal: int) -> None:
     plt.xlabel('Iterations')
     plt.ylabel('Best cost')
     plt.legend(loc='lower right')
+    plt.savefig('graph.png')
     plt.show()

@@ -39,7 +39,7 @@ class KnapsackProblem:
 
     def __str__(self) -> str:
         result = [
-            f'Knapsack capacity: {self.capacity}',
+            f'\nKnapsack capacity: {self.capacity}',
             f'Items ({len(self.items)}):\n',
             '| Number | Cost | Weight |',
             *[
@@ -117,10 +117,7 @@ def print_iteration_info(iteration: int, iteration_limit: int, best: Creature):
         print('| Iteration', 'Best cost', 'Best creature |'.rjust(102), sep=' | ')
 
     if iteration % 20 == 0:
-        print(128 * '-')
-        print('|', end='')
-        print('{:-10}'.format(iteration), '{:-9}'.format(best.value), best, sep=' | ', end='')
-        print(' |')
+        print(128 * '-' + '\n' + '| {:-9} | {:-9} | {} |'.format(iteration, best.value, best))
 
     if iteration == iteration_limit - 1:
         print('\nIteration limit reached\n')
