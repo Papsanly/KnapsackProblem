@@ -13,9 +13,12 @@ def main():
     print(problem)
     population = generate_initial_population(100, problem)
     algorithm = GeneticAlgorithm(population)
+
     solution = algorithm.solve()
+    print(f'Execution time: {algorithm.execution_time}s')
     print(f'Best solution: {solution}')
     print(f'Cost: {solution.value}')
+
     optimal = get_optimal_solution(problem)
     print(f'Optimal cost: {optimal}')
     graph_evolution(algorithm, optimal)

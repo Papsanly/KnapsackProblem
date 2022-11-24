@@ -1,3 +1,5 @@
+import time
+
 from Creature import Creature
 from Population import Population
 from knapsack_problem import print_iteration_info
@@ -15,8 +17,10 @@ class GeneticAlgorithm:
         self.iteration_limit = iteration_limit
         self._print_info = print_info
         self.evolution_info = []
+        self.execution_time = None
 
     def solve(self) -> Creature:
+        execution_time_start = time.time()
         for i in range(self.iteration_limit):
             parent1, parent2 = self.population.make_selection()
 
@@ -31,4 +35,5 @@ class GeneticAlgorithm:
             if self._print_info:
                 print_iteration_info(i, self.iteration_limit, self.population.best)
 
+        self.execution_time = round(time.time() - execution_time_start, 3)
         return self.population.best
